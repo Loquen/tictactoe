@@ -1,0 +1,17 @@
+body {
+    text-align: center;
+}
+
+#game-board {
+    margin: 0 auto;
+    font-size: 100px;
+    border-collapse: collapse;
+}
+
+th {
+    padding: 20px;
+}
+
+table, th, td {
+    border: 5px solid black;
+}
