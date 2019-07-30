@@ -7,14 +7,17 @@ const COLORS = {
 
 const WIN = [3, -3];
 
-const R1 = [0, 1, 2];
-const R2 = [3, 4, 5];
-const R3 = [6, 7, 8];
-const C1 = [0, 3, 6];
-const C2 = [1, 4, 7];
-const C3 = [2, 5, 8];
-const LD = [0, 4, 8];
-const RD = [0, 4, 6];
+// Ended up not needing this
+const WINTABLE = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [0, 4, 6]
+];
 /*----- app's state (variables) -----*/ 
 let board, turn, winner
 
@@ -37,6 +40,7 @@ function init(){
     winner = null; // 1, -1, null (no winner, falsey), 'T'(tie)
 
     render();
+    confetti.stop();
 }
 
 function render(){
@@ -81,6 +85,15 @@ function getWinner(){
     state[6] = board[0] + board[4] + board[8];
     state[7] = board[2] + board[4] + board[6];
 
+    // WINTABLE.forEach(function(line, idx){
+    //     let sum = Math.abs(board[line[0]] + board[line[1]] + board[line[2]]);
+    //     if(sum === 3){
+    //         console.log(board[line[0]]);
+    //         winningLine = board[line[0]];
+    //         return board[line[0]];
+    //     }
+    // });  
+
     if(state.indexOf(WIN[0]) >= 0 || state.indexOf(WIN[1]) >= 0){
         if(state.indexOf(WIN[0]) >= 0){
             winningLine = state.indexOf(WIN[0]);
@@ -90,22 +103,9 @@ function getWinner(){
     };
 
     if(winningLine >= 0){
+        confetti.start();
         return state[winningLine] / 3;
     } else if(state.indexOf(0) === -1){
         return 'T';
     }
-
-    // Tie if every cell is filled
-    // if(!board.indexOf(0)) {
-    //     winner = 'T';
-    // } else {
-    //     winner = turn;
-    // }
-    // Win if |down|*3 |right|*3 |rightDiag| or |leftDiag|
-    // board.forEach(function(cell, idx){
-    
-    // if(board[0])
-
-    // });
-
 }

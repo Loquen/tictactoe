@@ -15,8 +15,8 @@ body {
 
 section {
     display: grid;
-    grid-template-columns: repeat(3, 10vmin);
-    grid-template-rows: repeat(3, 10vmin);
+    grid-template-columns: repeat(3, 20vmin);
+    grid-template-rows: repeat(3, 20vmin);
     grid-gap: 1vmin;
 
 }
@@ -34,4 +34,12 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+
+button:hover {
+    background-color: darkgray;
+}
+
+button:active {
+    border:none;
 }
